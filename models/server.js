@@ -1,18 +1,21 @@
-const { response } = require('express');
 const express = require('express');
+const cors = require('cors');
 
 class Server {
      
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        this.routes()
+        this.middlewares();
+        this.routes();
+    }
+
+    middlewares(){
+        this.app.use( cors());
     }
 
     routes(){
-        this.app.get('/', (req, res = response) => {
-            res.send('Hola Mundo')
-        })
+        this.app.use('/api', require('../routes/ruta'));
     }
 
     listen(){
