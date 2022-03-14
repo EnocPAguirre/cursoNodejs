@@ -2,8 +2,10 @@ const {response} = require('express');
 
 
 const getRequest = (req, res = response)=>{
+    const query = req.query;
     res.json({
-        msg: 'Respuesta'
+        msg: 'Respuesta',
+        query
     })
 }
 
@@ -14,7 +16,15 @@ const postRequest = (req, res = response) => {
     })
 }
 
+const putRequest = (req, res = response) => {
+    const id = req.params;
+    res.json({
+        id
+    })
+}
+
 module.exports = {
  getRequest,
- postRequest
+ postRequest,
+ putRequest
 }
