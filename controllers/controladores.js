@@ -7,7 +7,14 @@ const getRequest = (req, res = response)=>{
     })
 }
 
-module.exports = {
+const postRequest = (req, res = response) => {
+    const body = req.body;
+    res.json({
+        body
+    })
+}
 
- getRequest
+module.exports = {
+ getRequest,
+ postRequest
 }
